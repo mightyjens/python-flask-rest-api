@@ -9,7 +9,7 @@ users = {
 }
 
 @auth.verify_password
-def verify_password(username, password):
+def verify_password(username, password) -> str:
     if username in users and check_password_hash(users.get(username), password):
         return username
     else:
