@@ -1,2 +1,3 @@
 Flask
 Zeep
+python-decouple
