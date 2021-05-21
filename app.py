@@ -3,6 +3,7 @@ import re
 import json
 from flask import Flask
 
+
 # Define routes
 # https://realpython.com/flask-blueprint/#what-a-flask-application-looks-like
 from v1.routes import api as api_v1
