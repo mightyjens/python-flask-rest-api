@@ -10,5 +10,5 @@ def index():
     return common.functions.helloworld()
 
 @api.route('/checkversion')
-def index():
+def checkVersion():
     return v1.functions.checkVersion()
