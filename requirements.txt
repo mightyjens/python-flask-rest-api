@@ -1,3 +1,4 @@
 Flask
 Zeep
-python-decouple
+Python-Decouple
+Flask_HttpAuth
