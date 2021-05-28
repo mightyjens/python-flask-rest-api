@@ -2,7 +2,7 @@ from v1.functions import checkRuntime, checkVersion, testRequest
 from common.authy import auth
 from flask import Blueprint
 
-import common.cosmos
+import common.mongo
 
 
 api = Blueprint('api_v1', __name__)
@@ -14,7 +14,8 @@ def index():
 @api.route('/test')
 @auth.login_required
 def test():
-    return common.cosmos.getUserFromDatabase()
+    return '', 200
+    #return common.mongo.getUserFromDatabase("jens")
     #return testRequest()
 
     

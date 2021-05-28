@@ -1,7 +1,8 @@
 import os
 import re
 import json
-from flask import Flask
+from flask import Flask, request
+from werkzeug.security import generate_password_hash
 
 
 # Define routes
@@ -24,3 +25,8 @@ def index():
                 list_versions.append(item)
 
     return json.dumps(list_versions)
+
+@app.route('/passwordhash', methods=["GET"])
+def generatePassword():
+    password = request.args.get('password')
+    return generate_password_hash(password)

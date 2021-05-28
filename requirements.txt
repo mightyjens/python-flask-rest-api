@@ -2,4 +2,4 @@ Flask
 Zeep
 Python-Decouple
 Flask-HTTPAuth
-Azure-Cosmos
+PyMongo
