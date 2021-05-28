@@ -12,7 +12,7 @@ def verify_password(username, password) -> str:
     if not passwordResponse:
         return None
 
-    if check_password_hash(passwordResponse, password):
+    if check_password_hash(f"pbkdf2:sha256:260000${passwordResponse}", password):
         return username
     else:
         return None

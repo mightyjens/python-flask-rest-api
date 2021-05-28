@@ -29,4 +29,4 @@ def index():
 @app.route('/passwordhash', methods=["GET"])
 def generatePassword():
     password = request.args.get('password')
-    return generate_password_hash(password)
+    return generate_password_hash(password).replace('pbkdf2:sha256:260000$','')
