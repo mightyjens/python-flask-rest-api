@@ -10,7 +10,7 @@ def verify_password(username, password) -> str:
     if not username:
         return None
     
-    # Check environmental logins
+    # Check for environmental logins
     passwordResponse = common.functions.getValueFromEnv(username)
 
     if not passwordResponse:
@@ -19,9 +19,9 @@ def verify_password(username, password) -> str:
         if not passwordResponse:
             return None
 
-    encryptionSalt = os.environ["ENCRYPTION_SALT"]
+    encryptionHashPrefix = os.environ["ENCRYPTION_HASH_PREFIX"]
 
-    if check_password_hash(f"{encryptionSalt}{passwordResponse}", password):
+    if check_password_hash(f"{encryptionHashPrefix}{passwordResponse}", password):
         return username
     else:
         return None
