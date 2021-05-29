@@ -5,6 +5,7 @@ from flask import Blueprint
 
 api = Blueprint('api_v1', __name__)
 
-@api.route('/')
+@api.route('/', methods=["GET"])
+@auth.login_required
 def index():
     return f"{checkVersion()} on {checkRuntime()}"

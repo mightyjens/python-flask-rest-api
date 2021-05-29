@@ -15,17 +15,23 @@ app.register_blueprint(api_v1, url_prefix='/v1')
 @app.route('/')
 def index():
     path = '.'
-    list_versions = []
-    directory_contents = os.listdir(path)
+    listVersions = []
+    directoryContents = os.listdir(path)
 
-    for item in directory_contents:
+    # List api versions 
+    for item in directoryContents:
         if os.path.isdir(item):
             if re.match('v[1-9]', item):
-                list_versions.append(item)
+                listVersions.append(item)
 
-    return json.dumps(list_versions)
+    return json.dumps(listVersions), 200
 
 @app.route('/passwordhash', methods=["GET"])
 def generatePassword():
     password = request.args.get('password')
-    return generate_password_hash(password).replace(os.environ["ENCRYPTION_SALT"],'')
+
+    # Return the hashed password
+    if password:
+        return generate_password_hash(password).replace(os.environ["ENCRYPTION_SALT"],''), 200
+    else:
+        return '', 400
