@@ -8,7 +8,8 @@ This is a really simple REST API Template I created while learning a little bit 
 I use it for my microservices in the company running as Azure App Service.
 
 ## Create Testing Environment
-- Setup your python evnironment
+- Setup your python environment properly
 - Clone the repository
 - Rename the .env_Example file to .env
   - There's a Test-User "Test" with Password "Hello" (encrypted with passwordhash() function)
+- Run the app
