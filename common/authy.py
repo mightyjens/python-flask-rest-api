@@ -1,4 +1,4 @@
-import common.mongo
+import os, common.mongo
 from flask_httpauth import HTTPBasicAuth
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -12,7 +12,9 @@ def verify_password(username, password) -> str:
     if not passwordResponse:
         return None
 
-    if check_password_hash(f"pbkdf2:sha256:260000${passwordResponse}", password):
+    encryptionSalt  = os.environ["ENCRYPTION_SALT"] 
+
+    if check_password_hash(f"{encryptionSalt}{passwordResponse}", password):
         return username
     else:
         return None

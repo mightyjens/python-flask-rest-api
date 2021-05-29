@@ -4,7 +4,6 @@ import json
 from flask import Flask, request
 from werkzeug.security import generate_password_hash
 
-
 # Define routes
 # https://realpython.com/flask-blueprint/#what-a-flask-application-looks-like
 from v1.routes import api as api_v1
@@ -29,4 +28,4 @@ def index():
 @app.route('/passwordhash', methods=["GET"])
 def generatePassword():
     password = request.args.get('password')
-    return generate_password_hash(password).replace('pbkdf2:sha256:260000$','')
+    return generate_password_hash(password).replace(os.environ["ENCRYPTION_SALT"],'')
