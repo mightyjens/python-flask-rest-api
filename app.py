@@ -1,17 +1,21 @@
-import os
-import re
-import json
+import os, re, json 
 from flask import Flask, request
 from werkzeug.security import generate_password_hash
 
 # Define routes
 # https://realpython.com/flask-blueprint/#what-a-flask-application-looks-like
+
+# Import the blueprint from versions
 from v1.routes import api as api_v1
+from v2.routes import api as api_v2
 
 app = Flask(__name__)
-app.register_blueprint(api_v1, url_prefix='/v1')
 
-# Set base url content
+# Now register the blueprint with url prefix
+app.register_blueprint(api_v1, url_prefix='/v1')
+app.register_blueprint(api_v2, url_prefix='/v2')
+
+# Show available versions
 @app.route('/')
 def index():
     path = '.'
@@ -26,12 +30,13 @@ def index():
 
     return json.dumps(listVersions), 200
 
+# Generate password hash for api users
 @app.route('/passwordhash', methods=["GET"])
 def generatePassword():
     password = request.args.get('password')
 
     # Return the hashed password
     if password:
-        return generate_password_hash(password).replace(os.environ["ENCRYPTION_SALT"],''), 200
+        return generate_password_hash(password).replace(os.environ["ENCRYPTION_HASH_PREFIX"],''), 200
     else:
         return '', 400
