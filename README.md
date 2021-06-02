@@ -13,3 +13,5 @@ I use it for my microservices in the company running as Azure App Service.
 - Rename the .env_Example file to .env
   - There's a Test-User "Test" with Password "Hello" (encrypted with passwordhash() function)
 - Run the app
+
+https://www.j3ns.de/python/a-simple-python-rest-api-template-on-azure-app-service/
