@@ -1,6 +1,6 @@
 # python-flask-rest-api
 REST API Template using Flask. 
-- Basic Authentication using Azure Cosmos DB (MongoDB)  
+- Basic Authentication using e.g. Azure Cosmos DB (MongoDB)  
 - API versioning with Flask Blueprints
 - Settings saved in env variables
 
