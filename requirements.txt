@@ -3,3 +3,4 @@ Zeep
 Python-Decouple
 Flask-HTTPAuth
 PyMongo
+logdna

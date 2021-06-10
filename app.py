@@ -1,4 +1,7 @@
 import os, re, json 
+import logging, logging.config
+
+from common.logdna import LOGGING
 from flask import Flask, request
 from werkzeug.security import generate_password_hash
 
@@ -14,6 +17,12 @@ app = Flask(__name__)
 # Now register the blueprint with url prefix
 app.register_blueprint(api_v1, url_prefix='/v1')
 app.register_blueprint(api_v2, url_prefix='/v2')
+
+# Logging setup
+app.config['LOGGER_HANDLER_POLICY'] = os.environ['LOG_POLICY']
+app.logger 
+
+logging.config.dictConfig(LOGGING)
 
 # Show available versions
 @app.route('/')
